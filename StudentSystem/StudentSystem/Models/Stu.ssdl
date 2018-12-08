@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Stu.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="StuStoreContainer">
+    <EntitySet Name="Admins" EntityType="Stu.Store.Admins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Class" EntityType="Stu.Store.Class" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Gnb" EntityType="Stu.Store.Gnb" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Grade" EntityType="Stu.Store.Grade" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LeaveInfo" EntityType="Stu.Store.LeaveInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Qxb" EntityType="Stu.Store.Qxb" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="Stu.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Student" EntityType="Stu.Store.Student" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Admins__RoleId__1273C1CD" Association="Stu.Store.FK__Admins__RoleId__1273C1CD">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Admins" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Class__Gid__1CF15040" Association="Stu.Store.FK__Class__Gid__1CF15040">
+      <End Role="Grade" EntitySet="Grade" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Qxb__GnId__182C9B23" Association="Stu.Store.FK__Qxb__GnId__182C9B23">
+      <End Role="Gnb" EntitySet="Gnb" />
+      <End Role="Qxb" EntitySet="Qxb" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Qxb__RoleId__173876EA" Association="Stu.Store.FK__Qxb__RoleId__173876EA">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Qxb" EntitySet="Qxb" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Cid__24927208" Association="Stu.Store.FK__Student__Cid__24927208">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Gid__239E4DCF" Association="Stu.Store.FK__Student__Gid__239E4DCF">
+      <End Role="Grade" EntitySet="Grade" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="Aid" />
+    </Key>
+    <Property Name="Aid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AdminPwd" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Cid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gid" Type="int" />
+  </EntityType>
+  <EntityType Name="Gnb">
+    <Key>
+      <PropertyRef Name="GnId" />
+    </Key>
+    <Property Name="GnId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GnName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="Gid" />
+    </Key>
+    <Property Name="Gid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GNum" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LeaveInfo">
+    <Key>
+      <PropertyRef Name="Lid" />
+    </Key>
+    <Property Name="Lid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StuNum" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StuName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="GNum" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="BeginDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="Addresss" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Reason" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Principal" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Statu" Type="int" />
+  </EntityType>
+  <EntityType Name="Qxb">
+    <Key>
+      <PropertyRef Name="Qid" />
+    </Key>
+    <Property Name="Qid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="GnId" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StuId" />
+    </Key>
+    <Property Name="StuId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StuNum" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StuName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Gid" Type="int" />
+    <Property Name="Cid" Type="int" />
+  </EntityType>
+  <Association Name="FK__Admins__RoleId__1273C1CD">
+    <End Role="Roles" Type="Stu.Store.Roles" Multiplicity="0..1" />
+    <End Role="Admins" Type="Stu.Store.Admins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Admins">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Class__Gid__1CF15040">
+    <End Role="Grade" Type="Stu.Store.Grade" Multiplicity="0..1" />
+    <End Role="Class" Type="Stu.Store.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Gid" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Qxb__GnId__182C9B23">
+    <End Role="Gnb" Type="Stu.Store.Gnb" Multiplicity="0..1" />
+    <End Role="Qxb" Type="Stu.Store.Qxb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gnb">
+        <PropertyRef Name="GnId" />
+      </Principal>
+      <Dependent Role="Qxb">
+        <PropertyRef Name="GnId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Qxb__RoleId__173876EA">
+    <End Role="Roles" Type="Stu.Store.Roles" Multiplicity="0..1" />
+    <End Role="Qxb" Type="Stu.Store.Qxb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Qxb">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Cid__24927208">
+    <End Role="Class" Type="Stu.Store.Class" Multiplicity="0..1" />
+    <End Role="Student" Type="Stu.Store.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Cid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Gid__239E4DCF">
+    <End Role="Grade" Type="Stu.Store.Grade" Multiplicity="0..1" />
+    <End Role="Student" Type="Stu.Store.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Gid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

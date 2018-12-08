@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudentSystemStoreContainer" CdmEntityContainer="StudentSystemEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="StudentSystem.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Aid" ColumnName="Aid" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminPwd" ColumnName="AdminPwd" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="StudentSystem.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gnbs">
+      <EntityTypeMapping TypeName="StudentSystem.Gnb">
+        <MappingFragment StoreEntitySet="Gnb">
+          <ScalarProperty Name="GnId" ColumnName="GnId" />
+          <ScalarProperty Name="GnName" ColumnName="GnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="StudentSystem.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="GNum" ColumnName="GNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Qxbs">
+      <EntityTypeMapping TypeName="StudentSystem.Qxb">
+        <MappingFragment StoreEntitySet="Qxb">
+          <ScalarProperty Name="Qid" ColumnName="Qid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="GnId" ColumnName="GnId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="StudentSystem.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="StudentSystem.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StuId" ColumnName="StuId" />
+          <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

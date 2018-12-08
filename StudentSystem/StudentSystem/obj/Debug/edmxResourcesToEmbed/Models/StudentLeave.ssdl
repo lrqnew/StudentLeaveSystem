@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="studentLeaveSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="Aid" />
+    </Key>
+    <Property Name="Aid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gid" Type="int" />
+  </EntityType>
+  <EntityType Name="Gnb">
+    <Key>
+      <PropertyRef Name="GnId" />
+    </Key>
+    <Property Name="GnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GnName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="Gid" />
+    </Key>
+    <Property Name="Gid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GNum" Type="int" />
+  </EntityType>
+  <EntityType Name="Qxb">
+    <Key>
+      <PropertyRef Name="Qid" />
+    </Key>
+    <Property Name="Qid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="GnId" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StuId" />
+    </Key>
+    <Property Name="StuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StuNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Gid" Type="int" />
+    <Property Name="Cid" Type="int" />
+  </EntityType>
+  <Association Name="FK__Admins__RoleId__1273C1CD">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Admins">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Class__Gid__1CF15040">
+    <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Gid" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Qxb__GnId__182C9B23">
+    <End Role="Gnb" Type="Self.Gnb" Multiplicity="0..1" />
+    <End Role="Qxb" Type="Self.Qxb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gnb">
+        <PropertyRef Name="GnId" />
+      </Principal>
+      <Dependent Role="Qxb">
+        <PropertyRef Name="GnId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Qxb__RoleId__173876EA">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Qxb" Type="Self.Qxb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Qxb">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Cid__20C1E124">
+    <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Cid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Gid__1FCDBCEB">
+    <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Gid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="studentLeaveSystemModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gnb" EntityType="Self.Gnb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Qxb" EntityType="Self.Qxb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Admins__RoleId__1273C1CD" Association="Self.FK__Admins__RoleId__1273C1CD">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Admins" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Class__Gid__1CF15040" Association="Self.FK__Class__Gid__1CF15040">
+      <End Role="Grade" EntitySet="Grade" />
+      <End Role="Class" EntitySet="Class" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Qxb__GnId__182C9B23" Association="Self.FK__Qxb__GnId__182C9B23">
+      <End Role="Gnb" EntitySet="Gnb" />
+      <End Role="Qxb" EntitySet="Qxb" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Qxb__RoleId__173876EA" Association="Self.FK__Qxb__RoleId__173876EA">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Qxb" EntitySet="Qxb" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Cid__20C1E124" Association="Self.FK__Student__Cid__20C1E124">
+      <End Role="Class" EntitySet="Class" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Gid__1FCDBCEB" Association="Self.FK__Student__Gid__1FCDBCEB">
+      <End Role="Grade" EntitySet="Grade" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

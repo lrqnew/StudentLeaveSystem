@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7e744da3d3040908b692ca755692d02" Name="Diagram1">
+        <EntityTypeShape EntityType="studentLeaveSystemModel.Admins" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="studentLeaveSystemModel.Class" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="studentLeaveSystemModel.Gnb" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="studentLeaveSystemModel.Grade" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="studentLeaveSystemModel.LeaveInfo" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="studentLeaveSystemModel.Qxb" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="studentLeaveSystemModel.Roles" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="studentLeaveSystemModel.Student" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="studentLeaveSystemModel.FK__Admins__RoleId__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="studentLeaveSystemModel.FK__Class__Gid__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="studentLeaveSystemModel.FK__Student__Cid__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="studentLeaveSystemModel.FK__Qxb__GnId__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="studentLeaveSystemModel.FK__Student__Gid__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="studentLeaveSystemModel.FK__Qxb__RoleId__173876EA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

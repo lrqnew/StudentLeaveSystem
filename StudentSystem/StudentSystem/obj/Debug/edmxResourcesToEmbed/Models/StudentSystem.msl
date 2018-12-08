@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="studentLeaveSystemModelStoreContainer" CdmEntityContainer="studentLeaveSystemEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.Admins">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Aid" ColumnName="Aid" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminPwd" ColumnName="AdminPwd" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gnb">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.Gnb">
+        <MappingFragment StoreEntitySet="Gnb">
+          <ScalarProperty Name="GnId" ColumnName="GnId" />
+          <ScalarProperty Name="GnName" ColumnName="GnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grade">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="GNum" ColumnName="GNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveInfo">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.LeaveInfo">
+        <MappingFragment StoreEntitySet="LeaveInfo">
+          <ScalarProperty Name="Lid" ColumnName="Lid" />
+          <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+          <ScalarProperty Name="StuName" ColumnName="StuName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="GNum" ColumnName="GNum" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Addresss" ColumnName="Addresss" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Principal" ColumnName="Principal" />
+          <ScalarProperty Name="Statu" ColumnName="Statu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Qxb">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.Qxb">
+        <MappingFragment StoreEntitySet="Qxb">
+          <ScalarProperty Name="Qid" ColumnName="Qid" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="GnId" ColumnName="GnId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="studentLeaveSystemModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StuId" ColumnName="StuId" />
+          <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+          <ScalarProperty Name="StuName" ColumnName="StuName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

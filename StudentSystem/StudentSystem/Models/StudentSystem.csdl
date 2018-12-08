@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentSystem" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="StudentSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="StudentSystem.Admin" />
+    <EntitySet Name="Classes" EntityType="StudentSystem.Class" />
+    <EntitySet Name="Gnbs" EntityType="StudentSystem.Gnb" />
+    <EntitySet Name="Grades" EntityType="StudentSystem.Grade" />
+    <EntitySet Name="Qxbs" EntityType="StudentSystem.Qxb" />
+    <EntitySet Name="Roles" EntityType="StudentSystem.Role" />
+    <EntitySet Name="Students" EntityType="StudentSystem.Student" />
+    <AssociationSet Name="FK__Admins__RoleId__1273C1CD" Association="StudentSystem.FK__Admins__RoleId__1273C1CD">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Admins" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Class__Gid__1CF15040" Association="StudentSystem.FK__Class__Gid__1CF15040">
+      <End Role="Grade" EntitySet="Grades" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Cid__20C1E124" Association="StudentSystem.FK__Student__Cid__20C1E124">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Qxb__GnId__182C9B23" Association="StudentSystem.FK__Qxb__GnId__182C9B23">
+      <End Role="Gnb" EntitySet="Gnbs" />
+      <End Role="Qxb" EntitySet="Qxbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Gid__1FCDBCEB" Association="StudentSystem.FK__Student__Gid__1FCDBCEB">
+      <End Role="Grade" EntitySet="Grades" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Qxb__RoleId__173876EA" Association="StudentSystem.FK__Qxb__RoleId__173876EA">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Qxb" EntitySet="Qxbs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Aid" />
+    </Key>
+    <Property Name="Aid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AdminPwd" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="Role" Relationship="StudentSystem.FK__Admins__RoleId__1273C1CD" FromRole="Admins" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Gid" Type="Int32" />
+    <NavigationProperty Name="Grade" Relationship="StudentSystem.FK__Class__Gid__1CF15040" FromRole="Class" ToRole="Grade" />
+    <NavigationProperty Name="Students" Relationship="StudentSystem.FK__Student__Cid__20C1E124" FromRole="Class" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Gnb">
+    <Key>
+      <PropertyRef Name="GnId" />
+    </Key>
+    <Property Name="GnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GnName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Qxbs" Relationship="StudentSystem.FK__Qxb__GnId__182C9B23" FromRole="Gnb" ToRole="Qxb" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="Gid" />
+    </Key>
+    <Property Name="Gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GNum" Type="Int32" />
+    <NavigationProperty Name="Classes" Relationship="StudentSystem.FK__Class__Gid__1CF15040" FromRole="Grade" ToRole="Class" />
+    <NavigationProperty Name="Students" Relationship="StudentSystem.FK__Student__Gid__1FCDBCEB" FromRole="Grade" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Qxb">
+    <Key>
+      <PropertyRef Name="Qid" />
+    </Key>
+    <Property Name="Qid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="GnId" Type="Int32" />
+    <NavigationProperty Name="Gnb" Relationship="StudentSystem.FK__Qxb__GnId__182C9B23" FromRole="Qxb" ToRole="Gnb" />
+    <NavigationProperty Name="Role" Relationship="StudentSystem.FK__Qxb__RoleId__173876EA" FromRole="Qxb" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Admins" Relationship="StudentSystem.FK__Admins__RoleId__1273C1CD" FromRole="Roles" ToRole="Admins" />
+    <NavigationProperty Name="Qxbs" Relationship="StudentSystem.FK__Qxb__RoleId__173876EA" FromRole="Roles" ToRole="Qxb" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StuId" />
+    </Key>
+    <Property Name="StuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StuNum" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Gid" Type="Int32" />
+    <Property Name="Cid" Type="Int32" />
+    <NavigationProperty Name="Class" Relationship="StudentSystem.FK__Student__Cid__20C1E124" FromRole="Student" ToRole="Class" />
+    <NavigationProperty Name="Grade" Relationship="StudentSystem.FK__Student__Gid__1FCDBCEB" FromRole="Student" ToRole="Grade" />
+  </EntityType>
+  <Association Name="FK__Admins__RoleId__1273C1CD">
+    <End Role="Roles" Type="StudentSystem.Role" Multiplicity="0..1" />
+    <End Role="Admins" Type="StudentSystem.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Admins">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Class__Gid__1CF15040">
+    <End Role="Grade" Type="StudentSystem.Grade" Multiplicity="0..1" />
+    <End Role="Class" Type="StudentSystem.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Gid" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Cid__20C1E124">
+    <End Role="Class" Type="StudentSystem.Class" Multiplicity="0..1" />
+    <End Role="Student" Type="StudentSystem.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Cid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Qxb__GnId__182C9B23">
+    <End Role="Gnb" Type="StudentSystem.Gnb" Multiplicity="0..1" />
+    <End Role="Qxb" Type="StudentSystem.Qxb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gnb">
+        <PropertyRef Name="GnId" />
+      </Principal>
+      <Dependent Role="Qxb">
+        <PropertyRef Name="GnId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Gid__1FCDBCEB">
+    <End Role="Grade" Type="StudentSystem.Grade" Multiplicity="0..1" />
+    <End Role="Student" Type="StudentSystem.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Gid" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Gid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Qxb__RoleId__173876EA">
+    <End Role="Roles" Type="StudentSystem.Role" Multiplicity="0..1" />
+    <End Role="Qxb" Type="StudentSystem.Qxb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Qxb">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
